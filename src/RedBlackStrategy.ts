@@ -133,24 +133,21 @@ export class RedBlackStrategy<T> implements BinaryTreeStrategy<RedBlackStrategyD
       if (node.parent != null && node === node.parent.left) {
         w = node.parent.right;
         if (w != null) {
-          // type 1
           if (w.strategy.red) {
-            console.log('type 1');
+            //console.log('type 1');
             w.strategy.red = false;
             node.parent.strategy.red = true;
             tree.rotateLeft(node.parent);
             w = node.parent.right;
           }
           if (w != null) {
-            // type 2
             if (w.left && !w.left.strategy.red && w.right && !w.right.strategy.red) {
-              console.log('type 2');
+              //console.log('type 2');
               w.strategy.red = true;
               node = node.parent;
             } else {
-              // type 3
               if (w.right && !w.right.strategy.red) {
-                console.log('type 3');
+                //console.log('type 3');
                 if (w.left != null) {
                   w.left.strategy.red = false;
                 }
@@ -159,8 +156,7 @@ export class RedBlackStrategy<T> implements BinaryTreeStrategy<RedBlackStrategyD
                 w = node.parent.right;
               }
               if (w != null) {
-                // type 4
-                console.log('type 4');
+                //console.log('type 4');
                 w.strategy.red = node.parent.strategy.red;
                 node.parent.strategy.red = false;
                 if (w.right != null) {
